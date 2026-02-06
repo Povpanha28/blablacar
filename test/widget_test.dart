@@ -5,6 +5,10 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:blablacar/dummy_data/dummy_data.dart';
+import 'package:blablacar/model/ride/locations.dart';
+import 'package:blablacar/model/ride/ride.dart';
+import 'package:blablacar/services/rides_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -26,5 +30,11 @@ void main() {
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
+  });
+
+  test("Testing service", () {
+    // List<Ride> availableRides = fakeRides;
+    Location location = Location(name: "London", country: Country.uk);
+    print(RidesService.filterBy(departure: location));
   });
 }
