@@ -40,6 +40,15 @@ class RidesService {
     if (seatRequested != null) {
       filtered = _filterBySeatRequested(availableRides, seatRequested);
     }
+    if (departure != null && seatRequested != null) {
+      filtered = [
+        ..._filterByDeparture(availableRides, departure),
+        ..._filterBySeatRequested(availableRides, seatRequested),
+      ];
+      Set<Ride> uniqueSet = filtered.toSet();
+      List<Ride> uniqueList = uniqueSet.toList();
+      filtered = uniqueList;
+    }
     return filtered;
   }
 }
